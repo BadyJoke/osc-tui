@@ -27,6 +27,8 @@ import loadbalancerGrid
 import virtualMachine
 import volumesGrid
 
+import time
+
 MODE = "INSTANCES"
 SELECTED_BUTTON = 0
 CURRENT_GRID_CLASS = instancesGrid.InstancesGrid
@@ -259,8 +261,22 @@ class MainForm(npyscreen.FormBaseNew):
         super().draw_form()
         MAXX, _ = self.curses_pad.getmaxyx()
         self.curses_pad.vline(1, 15, curses.ACS_VLINE, MAXX - 2)
-
+    
     def reload(self):
         main.kill_threads()
         self.parentApp.addForm("Cockpit", MainForm, name="osc-tui")
         self.parentApp.switchForm("Cockpit")
+
+    def quit():
+        main.kill_threads()
+        exit()
+
+    def short_refresh(a,b):
+        print(dir(CURRENT_GRID_CLASS))
+        time.sleep(50)
+        
+    def set_up_handlers(self):
+        super().set_up_handlers()
+        self.add_handlers({"^Q": quit})
+        self.add_handlers({"^R": self.short_refresh})
+        self.add_handlers({"^H": popup.showHelp})
