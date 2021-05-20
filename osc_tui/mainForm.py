@@ -27,8 +27,6 @@ import loadbalancerGrid
 import virtualMachine
 import volumesGrid
 
-import time
-
 MODE = "INSTANCES"
 SELECTED_BUTTON = 0
 CURRENT_GRID_CLASS = instancesGrid.InstancesGrid
@@ -270,13 +268,8 @@ class MainForm(npyscreen.FormBaseNew):
     def quit():
         main.kill_threads()
         exit()
-
-    def short_refresh(a,b):
-        print(dir(CURRENT_GRID_CLASS))
-        time.sleep(50)
         
     def set_up_handlers(self):
         super().set_up_handlers()
         self.add_handlers({"^Q": quit})
-        self.add_handlers({"^R": self.short_refresh})
         self.add_handlers({"^H": popup.showHelp})
