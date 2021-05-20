@@ -1,4 +1,6 @@
 import curses
+import signal
+import sys
 
 import npyscreen
 import pyperclip
@@ -170,6 +172,7 @@ class mainMenu(npyscreen.MultiLineAction):
 class MainForm(npyscreen.FormBaseNew):
     def __init__(self, *args, **keywords):
         super().__init__(*args, **keywords)
+        signal.signal(signal.SIGINT, self.sig_handler)
 
     def create(self):
         def build_line(size):
@@ -273,3 +276,6 @@ class MainForm(npyscreen.FormBaseNew):
         super().set_up_handlers()
         self.add_handlers({"^Q": quit})
         self.add_handlers({"^H": popup.showHelp})
+
+    def sig_handler(signal, frame):
+        sys.exit(130)
