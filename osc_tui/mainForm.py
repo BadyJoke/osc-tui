@@ -215,7 +215,7 @@ class MainForm(npyscreen.FormBaseNew):
         elif MODE == 'Nets':
             CURRENT_GRID_CLASS = vpcsGrid.vpcsGrid
             menu_desc.append('Create new')
-        elif MODE == 'NetAccessPoint':
+        elif MODE == 'NetAccessPoints':
             CURRENT_GRID_CLASS = netAccesssPoint.Grid
             menu_desc.append('CREATE NEW')
         elif MODE == 'NET-PEERING':
