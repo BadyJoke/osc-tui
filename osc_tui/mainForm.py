@@ -232,7 +232,7 @@ class MainForm(npyscreen.FormBaseNew):
             mainMenu,
             form=self,
             relx=1,
-            max_width=14,
+            max_width=16,
             values=menu_desc,
         )
         y, _ = self.useable_space()
@@ -247,7 +247,7 @@ class MainForm(npyscreen.FormBaseNew):
             column_width=21,
             select_whole_line=True,
             scroll_exit=True,
-            relx=17,
+            relx=19,
             rely=2,
         )
 
@@ -258,7 +258,7 @@ class MainForm(npyscreen.FormBaseNew):
         _, MAXX = self.curses_pad.getmaxyx()
         super().draw_form()
         MAXX, _ = self.curses_pad.getmaxyx()
-        self.curses_pad.vline(1, 15, curses.ACS_VLINE, MAXX - 2)
+        self.curses_pad.vline(1, 17, curses.ACS_VLINE, MAXX - 2)
     
     def reload(self):
         main.kill_threads()
